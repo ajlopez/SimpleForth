@@ -43,6 +43,13 @@ machine.apply('dup');
 assert.equal(machine.pop(), 2);
 assert.equal(machine.pop(), 2);
 
+// Defined
+
+assert.equal(machine.defined('dup'), true);
+assert.equal(machine.defined('spam'), false);
+
+
+
 
 
 
