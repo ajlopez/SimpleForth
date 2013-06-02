@@ -45,3 +45,10 @@ assert.equal(result, "forth.push(1);forth.apply('mydup');");
 var result = compiler.compile('1 Math mydup');
 assert.ok(result);
 assert.equal(result, "forth.push(1);forth.push(Math);forth.apply('mydup');");
+
+// Compile native operator
+
+machine.defineNative('+', 2);
+var result = compiler.compile('1 2 + mydup');
+assert.ok(result);
+assert.equal(result, "forth.push(1 + 2);forth.apply('mydup');");
