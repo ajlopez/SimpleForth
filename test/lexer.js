@@ -27,3 +27,19 @@ token = lexer.nextToken();
 
 assert.equal(token, null);
 
+// Skip spaces
+
+var lexer = sfl.createLexer('  dup   ');
+
+assert.ok(lexer);
+
+var token = lexer.nextToken();
+
+assert.ok(token);
+assert.equal(token.type, TokenType.Word);
+assert.equal(token.value, 'dup');
+
+token = lexer.nextToken();
+
+assert.equal(token, null);
+
