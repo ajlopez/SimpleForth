@@ -35,6 +35,15 @@ machine.push(dup);
 assert.equal(machine.pop(), 1);
 assert.equal(machine.pop(), 1);
 
+// Define and apply dup
+
+machine.define('dup', dup);
+machine.push(2);
+machine.apply('dup');
+assert.equal(machine.pop(), 2);
+assert.equal(machine.pop(), 2);
+
+
 
 
 
