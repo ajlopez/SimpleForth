@@ -20,4 +20,21 @@ machine.push(2);
 assert.equal(machine.pop(), 2);
 assert.equal(machine.pop(), 1);
 
+// Initial dup
+
+function dup(forth) {
+    var value = machine.pop();
+    machine.push(value);
+    machine.push(value);
+}
+
+dup.forth = true;
+
+machine.push(1);
+machine.push(dup);
+assert.equal(machine.pop(), 1);
+assert.equal(machine.pop(), 1);
+
+
+
 
