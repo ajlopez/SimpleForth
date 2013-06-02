@@ -1,0 +1,16 @@
+{ "name": "simpleforth"
+, "description": "SimpleForth compile Forth-like code to JavaScript"
+, "keywords": [ "forth", "javascript", "compiler" ]
+, "version": "0.0.1alpha"
+, "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)"
+, "repository": { "type": "git", "url": "git://github.com/ajlopez/SimpleForth.git" }
+, "main": "./lib/simpleforth.js"
+, "engines": { "node": ">= 0.6.0 && < 0.11.0" }
+, "scripts": {
+    "test": "node ./test.js"
+  }
+, "dependencies": {
+  }
+, "devDependencies": {
+  }
+}
