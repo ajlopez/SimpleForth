@@ -52,3 +52,10 @@ machine.defineNative('+', 2);
 var result = compiler.compile('1 2 + mydup');
 assert.ok(result);
 assert.equal(result, "forth.push(1 + 2);forth.apply('mydup');");
+
+// Compile native operator without enough arguments
+
+machine.defineNative('+', 2);
+var result = compiler.compile('1 + mydup');
+assert.ok(result);
+assert.equal(result, "forth.push(1);forth.apply('+');forth.apply('mydup');");
