@@ -43,3 +43,20 @@ token = lexer.nextToken();
 
 assert.equal(token, null);
 
+// Get integer
+
+var lexer = sfl.createLexer('123');
+var token = lexer.nextToken();
+
+assert.ok(token);
+assert.equal(token.type, TokenType.Integer);
+assert.equal(token.value, '123');
+
+// Get negative integer
+
+var lexer = sfl.createLexer(' -123 ');
+var token = lexer.nextToken();
+
+assert.ok(token);
+assert.equal(token.type, TokenType.Integer);
+assert.equal(token.value, '-123');
