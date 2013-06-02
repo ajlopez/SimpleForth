@@ -34,3 +34,14 @@ var result = compiler.compile('mydup');
 assert.ok(result);
 assert.equal(result, "forth.apply('mydup');");
 
+// Compile two words
+
+var result = compiler.compile('1 mydup');
+assert.ok(result);
+assert.equal(result, "forth.push(1);forth.apply('mydup');");
+
+// Compile three words
+
+var result = compiler.compile('1 Math mydup');
+assert.ok(result);
+assert.equal(result, "forth.push(1);forth.push(Math);forth.apply('mydup');");
