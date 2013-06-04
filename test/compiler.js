@@ -59,3 +59,15 @@ machine.defineNative('+', 2);
 var result = compiler.compile('1 + mydup');
 assert.ok(result);
 assert.equal(result, "forth.push(1);forth.apply('+');forth.apply('mydup');");
+
+// Compile simple assigment
+
+var result = compiler.compile('1 x=');
+assert.ok(result);
+assert.equal(result, "var x = 1;");
+
+// Compile assigment
+
+var result = compiler.compile('1 mydup x=');
+assert.ok(result);
+assert.equal(result, "forth.push(1);forth.apply('mydup');var x = forth.pop();");
