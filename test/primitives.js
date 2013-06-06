@@ -40,3 +40,17 @@ assert.equal(typeof primitives.drop, "function");
 machine.push(1);
 primitives.drop(machine);
 assert.equal(machine.length(), 0);
+
+// swap
+
+assert.ok(primitives.swap);
+assert.equal(typeof primitives.swap, "function");
+
+machine.push(1);
+machine.push(2);
+primitives.swap(machine);
+assert.equal(machine.length(), 2);
+assert.equal(machine.pop(), 1);
+assert.equal(machine.pop(), 2);
+
+
