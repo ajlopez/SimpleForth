@@ -13,10 +13,11 @@ assert.ok(machine);
 machine.push(1);
 assert.equal(machine.pop(), 1);
 
-// Machine push push pop pop
+// Machine push push top pop pop
 
 machine.push(1);
 machine.push(2);
+assert.equal(machine.top(), 2);
 assert.equal(machine.pop(), 2);
 assert.equal(machine.pop(), 1);
 
