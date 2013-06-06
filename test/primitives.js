@@ -148,3 +148,13 @@ assert.equal(machine.pop(), 1);
 assert.equal(machine.pop(), 2);
 assert.equal(machine.pop(), 1);
 
+// 2drop
+
+assert.ok(primitives['2drop']);
+assert.equal(typeof primitives['2drop'], "function");
+
+machine.push(1);
+machine.push(2);
+primitives['2drop'](machine);
+assert.equal(machine.length(), 0);
+
