@@ -32,3 +32,11 @@ primitives['?dup'](machine);
 assert.equal(machine.length(), 1);
 assert.equal(machine.pop(), 0);
 
+// drop
+
+assert.ok(primitives.drop);
+assert.equal(typeof primitives.drop, "function");
+
+machine.push(1);
+primitives.drop(machine);
+assert.equal(machine.length(), 0);
