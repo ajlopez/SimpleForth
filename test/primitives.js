@@ -66,3 +66,15 @@ assert.equal(machine.pop(), 1);
 assert.equal(machine.pop(), 2);
 assert.equal(machine.pop(), 1);
 
+// nip
+
+assert.ok(primitives.nip);
+assert.equal(typeof primitives.nip, "function");
+
+machine.push(1);
+machine.push(2);
+primitives.nip(machine);
+assert.equal(machine.length(), 1);
+assert.equal(machine.pop(), 2);
+
+
