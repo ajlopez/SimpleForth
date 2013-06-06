@@ -77,4 +77,16 @@ primitives.nip(machine);
 assert.equal(machine.length(), 1);
 assert.equal(machine.pop(), 2);
 
+// tuck
+
+assert.ok(primitives.tuck);
+assert.equal(typeof primitives.tuck, "function");
+
+machine.push(1);
+machine.push(2);
+primitives.tuck(machine);
+assert.equal(machine.length(), 3);
+assert.equal(machine.pop(), 2);
+assert.equal(machine.pop(), 1);
+assert.equal(machine.pop(), 2);
 
