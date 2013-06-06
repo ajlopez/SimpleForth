@@ -8,17 +8,23 @@ var machine = sfm.createMachine();
 
 assert.ok(machine);
 
+// Length
+
+assert.equal(machine.length(), 0);
+
 // Machine push pop
 
 machine.push(1);
+assert.equal(machine.length(), 1);
 assert.equal(machine.pop(), 1);
 
 // Machine push push top pop pop
 
 machine.push(1);
-machine.push(2);
-assert.equal(machine.top(), 2);
-assert.equal(machine.pop(), 2);
+machine.push(3);
+assert.equal(machine.top(), 3);
+assert.equal(machine.length(), 2);
+assert.equal(machine.pop(), 3);
 assert.equal(machine.pop(), 1);
 
 // Initial dup
