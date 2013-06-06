@@ -174,3 +174,21 @@ assert.equal(machine.pop(), 1);
 assert.equal(machine.pop(), 4);
 assert.equal(machine.pop(), 3);
 
+// 2over
+
+assert.ok(primitives['2over']);
+assert.equal(typeof primitives['2over'], "function");
+
+machine.push(1);
+machine.push(2);
+machine.push(3);
+machine.push(4);
+primitives['2over'](machine);
+assert.equal(machine.length(), 6);
+assert.equal(machine.pop(), 2);
+assert.equal(machine.pop(), 1);
+assert.equal(machine.pop(), 4);
+assert.equal(machine.pop(), 3);
+assert.equal(machine.pop(), 2);
+assert.equal(machine.pop(), 1);
+
