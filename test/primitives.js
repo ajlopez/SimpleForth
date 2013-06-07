@@ -192,6 +192,28 @@ assert.equal(machine.pop(), 3);
 assert.equal(machine.pop(), 2);
 assert.equal(machine.pop(), 1);
 
+// min
+
+assert.ok(primitives.min);
+assert.equal(typeof primitives.min, "function");
+
+machine.push(1);
+machine.push(2);
+primitives.min(machine);
+assert.equal(machine.length(), 1);
+assert.equal(machine.pop(), 1);
+
+// max
+
+assert.ok(primitives.max);
+assert.equal(typeof primitives.max, "function");
+
+machine.push(1);
+machine.push(2);
+primitives.max(machine);
+assert.equal(machine.length(), 1);
+assert.equal(machine.pop(), 2);
+
 // +
 
 assert.ok(primitives['+']);
