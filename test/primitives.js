@@ -228,6 +228,20 @@ primitives.abs(machine);
 assert.equal(machine.length(), 1);
 assert.equal(machine.pop(), 1);
 
+// negate
+
+assert.ok(primitives.negate);
+assert.equal(typeof primitives.negate, "function");
+
+machine.push(1);
+machine.push(-2);
+primitives.negate(machine);
+assert.equal(machine.length(), 2);
+assert.equal(machine.pop(), 2);
+primitives.negate(machine);
+assert.equal(machine.length(), 1);
+assert.equal(machine.pop(), -1);
+
 // +
 
 assert.ok(primitives['+']);
