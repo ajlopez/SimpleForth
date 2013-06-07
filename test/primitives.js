@@ -377,3 +377,55 @@ machine.push(3);
 primitives['>='].apply(machine);
 assert.ok(machine.length(), 1);
 assert.equal(machine.pop(), true);
+
+// ==
+
+assert.ok(primitives['==']);
+assert.equal(typeof primitives['=='], "object");
+assert.equal(primitives['=='].arity, 2);
+assert.ok(primitives['=='].apply);
+assert.equal(typeof primitives['=='].apply, "function");
+
+machine.push(3);
+machine.push("3");
+primitives['=='].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), true);
+
+machine.push(3);
+machine.push(3);
+primitives['=='].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), true);
+
+machine.push(2);
+machine.push(3);
+primitives['=='].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), false);
+
+// ===
+
+assert.ok(primitives['===']);
+assert.equal(typeof primitives['==='], "object");
+assert.equal(primitives['==='].arity, 2);
+assert.ok(primitives['==='].apply);
+assert.equal(typeof primitives['==='].apply, "function");
+
+machine.push(3);
+machine.push("3");
+primitives['==='].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), false);
+
+machine.push(3);
+machine.push(3);
+primitives['==='].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), true);
+
+machine.push(2);
+machine.push(3);
+primitives['==='].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), false);
