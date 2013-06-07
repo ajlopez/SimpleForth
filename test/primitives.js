@@ -214,6 +214,20 @@ primitives.max(machine);
 assert.equal(machine.length(), 1);
 assert.equal(machine.pop(), 2);
 
+// abs
+
+assert.ok(primitives.abs);
+assert.equal(typeof primitives.abs, "function");
+
+machine.push(1);
+machine.push(-2);
+primitives.abs(machine);
+assert.equal(machine.length(), 2);
+assert.equal(machine.pop(), 2);
+primitives.abs(machine);
+assert.equal(machine.length(), 1);
+assert.equal(machine.pop(), 1);
+
 // +
 
 assert.ok(primitives['+']);
