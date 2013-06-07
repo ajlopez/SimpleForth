@@ -55,9 +55,8 @@ assert.equal(machine.pop(), 2);
 assert.equal(machine.defined('dup'), true);
 assert.equal(machine.defined('spam'), false);
 
-// Define binary native operator
+// Binary native operator
 
-machine.defineNative('+', 2);
 assert.ok(machine.isNative('+'));
 assert.equal(machine.getNativeArity('+'), 2);
 assert.equal(machine.isNative('spam'), false);

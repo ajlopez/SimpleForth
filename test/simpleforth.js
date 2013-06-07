@@ -5,7 +5,6 @@ var sf = require('..'),
 // Simple compile and run
     
 var forth = sf.createForth();
-forth.defineNative('+', 2);
 var func = sf.compile("1 2 +", forth);
 
 func(forth);

@@ -29,36 +29,33 @@ assert.equal(result, "forth.push(Math);");
 
 // Compile defined word
 
-machine.define('mydup', function () {});
-var result = compiler.compile('mydup');
+var result = compiler.compile('dup');
 assert.ok(result);
-assert.equal(result, "forth.apply('mydup');");
+assert.equal(result, "forth.apply('dup');");
 
 // Compile two words
 
-var result = compiler.compile('1 mydup');
+var result = compiler.compile('1 dup');
 assert.ok(result);
-assert.equal(result, "forth.push(1);forth.apply('mydup');");
+assert.equal(result, "forth.push(1);forth.apply('dup');");
 
 // Compile three words
 
-var result = compiler.compile('1 Math mydup');
+var result = compiler.compile('1 Math dup');
 assert.ok(result);
-assert.equal(result, "forth.push(1);forth.push(Math);forth.apply('mydup');");
+assert.equal(result, "forth.push(1);forth.push(Math);forth.apply('dup');");
 
 // Compile native operator
 
-machine.defineNative('+', 2);
-var result = compiler.compile('1 2 + mydup');
+var result = compiler.compile('1 2 + dup');
 assert.ok(result);
-assert.equal(result, "forth.push(1 + 2);forth.apply('mydup');");
+assert.equal(result, "forth.push(1 + 2);forth.apply('dup');");
 
 // Compile native operator without enough arguments
 
-machine.defineNative('+', 2);
-var result = compiler.compile('1 + mydup');
+var result = compiler.compile('1 + dup');
 assert.ok(result);
-assert.equal(result, "forth.push(1);forth.apply('+');forth.apply('mydup');");
+assert.equal(result, "forth.push(1);forth.apply('+');forth.apply('dup');");
 
 // Compile simple assigment
 
@@ -68,6 +65,6 @@ assert.equal(result, "var x = 1;");
 
 // Compile assigment
 
-var result = compiler.compile('1 mydup x=');
+var result = compiler.compile('1 dup x=');
 assert.ok(result);
-assert.equal(result, "forth.push(1);forth.apply('mydup');var x = forth.pop();");
+assert.equal(result, "forth.push(1);forth.apply('dup');var x = forth.pop();");
