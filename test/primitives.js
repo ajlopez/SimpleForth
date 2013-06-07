@@ -206,4 +206,18 @@ primitives['+'].apply(machine);
 assert.ok(machine.length(), 1);
 assert.equal(machine.pop(), 3);
 
+// -
+
+assert.ok(primitives['-']);
+assert.equal(typeof primitives['-'], "object");
+assert.equal(primitives['-'].arity, 2);
+assert.ok(primitives['-'].apply);
+assert.equal(typeof primitives['-'].apply, "function");
+
+machine.push(1);
+machine.push(2);
+primitives['-'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), -1);
+
 
