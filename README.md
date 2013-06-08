@@ -43,6 +43,7 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [Forth Interest Group](http://www.forth.org/)
 - [Forth Tutorials](http://www.forth.org/tutorials.html)
 - [Programming Forth (pdf)](http://www.mpeforth.com/arena/ProgramForth.pdf)
+- [JavaScript Operators Precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) with a list of operators to implement
 
 ## Contribution
 
