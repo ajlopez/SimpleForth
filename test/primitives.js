@@ -482,3 +482,21 @@ machine.push(3);
 primitives['!=='].apply(machine);
 assert.ok(machine.length(), 1);
 assert.equal(machine.pop(), true);
+
+// !
+
+assert.ok(primitives['!']);
+assert.equal(typeof primitives['!'], "object");
+assert.equal(primitives['!'].arity, 1);
+assert.ok(primitives['!'].apply);
+assert.equal(typeof primitives['!'].apply, "function");
+
+machine.push(true);
+primitives['!'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), false);
+
+machine.push(10);
+primitives['!'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), !10);
