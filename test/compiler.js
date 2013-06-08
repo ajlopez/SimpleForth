@@ -68,3 +68,9 @@ assert.equal(result, "var x = 1;");
 var result = compiler.compile('1 dup x=');
 assert.ok(result);
 assert.equal(result, "forth.push(1);forth.apply('dup');var x = forth.pop();");
+
+// Compile unary operator
+
+var result = compiler.compile('1 2 + !');
+assert.ok(result);
+assert.equal(result, "forth.push(!(1 + 2));");
