@@ -586,3 +586,64 @@ machine.push(2);
 primitives['>>>'].apply(machine);
 assert.ok(machine.length(), 1);
 assert.equal(machine.pop(), 256 >>> 2);
+
+// &
+
+assert.ok(primitives['&']);
+assert.equal(typeof primitives['&'], "object");
+assert.equal(primitives['&'].arity, 2);
+assert.ok(primitives['&'].apply);
+assert.equal(typeof primitives['&'].apply, "function");
+
+machine.push(3);
+machine.push(2);
+primitives['&'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), 2);
+
+machine.push(256);
+machine.push(2);
+primitives['&'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), 0);
+
+// |
+
+assert.ok(primitives['|']);
+assert.equal(typeof primitives['|'], "object");
+assert.equal(primitives['|'].arity, 2);
+assert.ok(primitives['|'].apply);
+assert.equal(typeof primitives['|'].apply, "function");
+
+machine.push(3);
+machine.push(2);
+primitives['|'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), 3);
+
+machine.push(256);
+machine.push(2);
+primitives['|'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), 258);
+
+// ^
+
+assert.ok(primitives['^']);
+assert.equal(typeof primitives['^'], "object");
+assert.equal(primitives['^'].arity, 2);
+assert.ok(primitives['^'].apply);
+assert.equal(typeof primitives['^'].apply, "function");
+
+machine.push(3);
+machine.push(2);
+primitives['^'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), 3 ^ 2);
+
+machine.push(256);
+machine.push(2);
+primitives['^'].apply(machine);
+assert.ok(machine.length(), 1);
+assert.equal(machine.pop(), 256 ^ 2);
+
