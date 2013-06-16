@@ -61,9 +61,8 @@ assert.ok(machine.isNative('+'));
 assert.equal(machine.getNativeArity('+'), 2);
 assert.equal(machine.isNative('spam'), false);
 
+// Comment
 
-
-
-
-
+assert.equal(machine.defined('('), true);
+assert.equal(machine.isImmediate('('), true);
 
