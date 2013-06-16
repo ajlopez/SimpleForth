@@ -1,8 +1,13 @@
 
 var primitives = require('../lib/primitives.js'),
+    sfl = require('../lib/lexer.js'),
     machine = require('../lib/machine.js').createMachine(),
     assert = require('assert');
 
+// TokenType
+
+var TokenType = sfl.TokenType;
+    
 // First primitive
 
 assert.ok(primitives.dup);
@@ -241,6 +246,22 @@ assert.equal(machine.pop(), 2);
 primitives.negate(machine);
 assert.equal(machine.length(), 1);
 assert.equal(machine.pop(), -1);
+
+// (
+
+assert.ok(primitives['(']);
+assert.equal(typeof primitives['('], "function");
+assert.ok(primitives['('].forth);
+assert.ok(primitives['('].forth.immediate);
+var lexer = sfl.createLexer("( a comment) dup");
+primitives['('](machine, lexer);
+assert.equal(machine.length(), 0);
+var token = lexer.nextToken();
+assert.ok(token);
+assert.equal(token.type, TokenType.Word);
+assert.equal(token.value, 'dup');
+token = lexer.nextToken();
+assert.equal(token, null);
 
 // +
 
