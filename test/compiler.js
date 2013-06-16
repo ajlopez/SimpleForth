@@ -74,3 +74,10 @@ assert.equal(result, "forth.push(1);forth.apply('dup');var x = forth.pop();");
 var result = compiler.compile('1 2 + !');
 assert.ok(result);
 assert.equal(result, "forth.push(!(1 + 2));");
+
+// Compile integer skipping comment
+
+var result = compiler.compile('( it is an integer) 123');
+
+assert.ok(result);
+assert.equal(result, "forth.push(123);");
