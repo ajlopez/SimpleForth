@@ -263,6 +263,19 @@ assert.equal(token.value, 'dup');
 token = lexer.nextToken();
 assert.equal(token, null);
 
+// ."
+
+assert.ok(primitives['."']);
+assert.equal(typeof primitives['."'], "function");
+assert.ok(primitives['."'].forth);
+assert.ok(primitives['."'].forth.immediate);
+var lexer = sfl.createLexer('a string"');
+var result = primitives['."'](machine, lexer);
+assert.equal(machine.length(), 0);
+assert.equal(result, '"a string"');
+var token = lexer.nextToken();
+assert.equal(token, null);
+
 // +
 
 assert.ok(primitives['+']);

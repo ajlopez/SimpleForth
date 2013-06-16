@@ -75,9 +75,17 @@ var result = compiler.compile('1 2 + !');
 assert.ok(result);
 assert.equal(result, "forth.push(!(1 + 2));");
 
+// Compile string
+
+var result = compiler.compile('." Hello world"');
+
+assert.ok(result);
+assert.equal(result, 'forth.push("Hello world");');
+
 // Compile integer skipping comment
 
 var result = compiler.compile('( it is an integer) 123');
 
 assert.ok(result);
 assert.equal(result, "forth.push(123);");
+
