@@ -276,6 +276,21 @@ assert.equal(result, '"a string"');
 var token = lexer.nextToken();
 assert.equal(token, null);
 
+// variable
+
+assert.ok(primitives.variable);
+assert.equal(typeof primitives.variable, "function");
+assert.ok(primitives.variable.forth);
+assert.ok(primitives.variable.forth.immediate);
+var lexer = sfl.createLexer('x');
+var result = primitives.variable(machine, lexer);
+assert.equal(machine.length(), 0);
+assert.ok(result);
+assert.ok(result.append);
+assert.equal(result.append, "var x;");
+var token = lexer.nextToken();
+assert.equal(token, null);
+
 // +
 
 assert.ok(primitives['+']);

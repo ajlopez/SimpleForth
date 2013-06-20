@@ -89,3 +89,9 @@ var result = compiler.compile('( it is an integer) 123');
 assert.ok(result);
 assert.equal(result, "forth.push(123);");
 
+// Compile variable
+
+var result = compiler.compile('variable x');
+
+assert.ok(result);
+assert.equal(result, "var x;");
