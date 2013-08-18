@@ -1,13 +1,12 @@
 
-var sf = require('..'),
-    assert = require('assert');
+var sf = require('..');
 
-// Simple compile and run
-    
-var forth = sf.createForth();
-var func = sf.compile("1 2 +", forth);
+exports['Simple compile and run'] = function (test) {   
+    var forth = sf.createForth();
+    var func = sf.compile("1 2 +", forth);
 
-func(forth);
+    func(forth);
 
-assert.equal(forth.pop(), 3);
+    test.equal(forth.pop(), 3);
+}
 

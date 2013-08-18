@@ -1,7 +1,6 @@
 
 var sfc = require('../lib/compiler'),
-    sfm = require('../lib/machine'),
-    assert = require('assert');
+    sfm = require('../lib/machine');
 
 // Create machine
 
@@ -11,87 +10,85 @@ var machine = sfm.createMachine();
 
 var compiler = sfc.createCompiler(machine);
 
-assert.ok(compiler);
+exports['Compile integer'] = function (test) {
+    var result = compiler.compile('123');
 
-// Compile integer
+    test.ok(result);
+    test.equal(result, "forth.push(123);");
+}
 
-var result = compiler.compile('123');
+exports['Compile undefined word'] = function (test) {
+    var result = compiler.compile('Math');
 
-assert.ok(result);
-assert.equal(result, "forth.push(123);");
+    test.ok(result);
+    test.equal(result, "forth.push(Math);");
+}
 
-// Compile undefined word
+exports['Compile defined word'] = function (test) {
+    var result = compiler.compile('dup');
+    test.ok(result);
+    test.equal(result, "forth.apply('dup');");
+}
 
-var result = compiler.compile('Math');
+exports['Compile two words'] = function (test) {
+    var result = compiler.compile('1 dup');
+    test.ok(result);
+    test.equal(result, "forth.push(1);forth.apply('dup');");
+}
 
-assert.ok(result);
-assert.equal(result, "forth.push(Math);");
+exports['Compile three words'] = function (test) {
+    var result = compiler.compile('1 Math dup');
+    test.ok(result);
+    test.equal(result, "forth.push(1);forth.push(Math);forth.apply('dup');");
+}
 
-// Compile defined word
+exports['Compile native operator'] = function (test) {
+    var result = compiler.compile('1 2 + dup');
+    test.ok(result);
+    test.equal(result, "forth.push(1 + 2);forth.apply('dup');");
+}
 
-var result = compiler.compile('dup');
-assert.ok(result);
-assert.equal(result, "forth.apply('dup');");
+exports['Compile native operator without enough arguments'] = function (test) {
+    var result = compiler.compile('1 + dup');
+    test.ok(result);
+    test.equal(result, "forth.push(1);forth.apply('+');forth.apply('dup');");
+}
 
-// Compile two words
+exports['Compile simple assigment'] = function (test) {
+    var result = compiler.compile('1 x=');
+    test.ok(result);
+    test.equal(result, "var x = 1;");
+}
 
-var result = compiler.compile('1 dup');
-assert.ok(result);
-assert.equal(result, "forth.push(1);forth.apply('dup');");
+exports['Compile assigment'] = function (test) {
+    var result = compiler.compile('1 dup x=');
+    test.ok(result);
+    test.equal(result, "forth.push(1);forth.apply('dup');var x = forth.pop();");
+}
 
-// Compile three words
+exports['Compile unary operator'] = function (test) {
+    var result = compiler.compile('1 2 + !');
+    test.ok(result);
+    test.equal(result, "forth.push(!(1 + 2));");
+}
 
-var result = compiler.compile('1 Math dup');
-assert.ok(result);
-assert.equal(result, "forth.push(1);forth.push(Math);forth.apply('dup');");
+exports['Compile string'] = function (test) {
+    var result = compiler.compile('." Hello world"');
 
-// Compile native operator
+    test.ok(result);
+    test.equal(result, 'forth.push("Hello world");');
+}
 
-var result = compiler.compile('1 2 + dup');
-assert.ok(result);
-assert.equal(result, "forth.push(1 + 2);forth.apply('dup');");
+exports['Compile integer skipping comment'] = function (test) {
+    var result = compiler.compile('( it is an integer) 123');
 
-// Compile native operator without enough arguments
+    test.ok(result);
+    test.equal(result, "forth.push(123);");
+}
 
-var result = compiler.compile('1 + dup');
-assert.ok(result);
-assert.equal(result, "forth.push(1);forth.apply('+');forth.apply('dup');");
+exports['Compile variable'] = function (test) {
+    var result = compiler.compile('variable x');
 
-// Compile simple assigment
-
-var result = compiler.compile('1 x=');
-assert.ok(result);
-assert.equal(result, "var x = 1;");
-
-// Compile assigment
-
-var result = compiler.compile('1 dup x=');
-assert.ok(result);
-assert.equal(result, "forth.push(1);forth.apply('dup');var x = forth.pop();");
-
-// Compile unary operator
-
-var result = compiler.compile('1 2 + !');
-assert.ok(result);
-assert.equal(result, "forth.push(!(1 + 2));");
-
-// Compile string
-
-var result = compiler.compile('." Hello world"');
-
-assert.ok(result);
-assert.equal(result, 'forth.push("Hello world");');
-
-// Compile integer skipping comment
-
-var result = compiler.compile('( it is an integer) 123');
-
-assert.ok(result);
-assert.equal(result, "forth.push(123);");
-
-// Compile variable
-
-var result = compiler.compile('variable x');
-
-assert.ok(result);
-assert.equal(result, "var x;");
+    test.ok(result);
+    test.equal(result, "var x;");
+}

@@ -1,68 +1,95 @@
 
-var sfm = require('../lib/machine.js'),
-    assert = require('assert');
+var sfm = require('../lib/machine.js');
     
-// Creates machine
-
-var machine = sfm.createMachine();
-
-assert.ok(machine);
-
-// Length
-
-assert.equal(machine.length(), 0);
-
-// Machine push pop
-
-machine.push(1);
-assert.equal(machine.length(), 1);
-assert.equal(machine.pop(), 1);
-
-// Machine push push top pop pop
-
-machine.push(1);
-machine.push(3);
-assert.equal(machine.top(), 3);
-assert.equal(machine.length(), 2);
-assert.equal(machine.pop(), 3);
-assert.equal(machine.pop(), 1);
-
-// Initial dup
-
-function dup(forth) {
-    var value = machine.pop();
-    machine.push(value);
-    machine.push(value);
+exports['Creates machine'] = function (test) {
+    var machine = sfm.createMachine();
+    test.ok(machine);
 }
 
-dup.forth = true;
+exports['Length'] = function (test) {
+    var machine = sfm.createMachine();
+    test.equal(machine.length(), 0);
+}
 
-machine.push(1);
-machine.push(dup);
-assert.equal(machine.pop(), 1);
-assert.equal(machine.pop(), 1);
+exports['Machine push pop'] = function (test) {
+    var machine = sfm.createMachine();
+    machine.push(1);
+    test.equal(machine.length(), 1);
+    test.equal(machine.pop(), 1);
+}
 
-// Define and apply dup
+exports['Machine push push top pop pop'] = function (test) {
+    var machine = sfm.createMachine();
 
-machine.define('dup', dup);
-machine.push(2);
-machine.apply('dup');
-assert.equal(machine.pop(), 2);
-assert.equal(machine.pop(), 2);
+    machine.push(1);
+    machine.push(3);
+    test.equal(machine.top(), 3);
+    test.equal(machine.length(), 2);
+    test.equal(machine.pop(), 3);
+    test.equal(machine.pop(), 1);
+}
+  
+exports['Initial dup'] = function (test) {
+    var machine = sfm.createMachine();
 
-// Defined
+    function dup(forth) {
+        var value = machine.pop();
+        machine.push(value);
+        machine.push(value);
+    }
 
-assert.equal(machine.defined('dup'), true);
-assert.equal(machine.defined('spam'), false);
+    dup.forth = true;
 
-// Binary native operator
+    machine.push(1);
+    machine.push(dup);
+    test.equal(machine.pop(), 1);
+    test.equal(machine.pop(), 1);
+}
 
-assert.ok(machine.isNative('+'));
-assert.equal(machine.getNativeArity('+'), 2);
-assert.equal(machine.isNative('spam'), false);
+exports['Define and apply dup'] = function (test) {
+    var machine = sfm.createMachine();
 
-// Comment
+    function dup(forth) {
+        var value = machine.pop();
+        machine.push(value);
+        machine.push(value);
+    }
 
-assert.equal(machine.defined('('), true);
-assert.equal(machine.isImmediate('('), true);
+    dup.forth = true;
 
+    machine.define('dup', dup);
+    machine.push(2);
+    machine.apply('dup');
+    test.equal(machine.pop(), 2);
+    test.equal(machine.pop(), 2);
+}
+
+exports['Defined'] = function (test) {
+    var machine = sfm.createMachine();
+
+    function dup(forth) {
+        var value = machine.pop();
+        machine.push(value);
+        machine.push(value);
+    }
+
+    dup.forth = true;
+
+    test.equal(machine.defined('dup'), true);
+    test.equal(machine.defined('spam'), false);
+}
+
+exports['Binary native operator'] = function (test) {
+    var machine = sfm.createMachine();
+
+    test.ok(machine.isNative('+'));
+    test.equal(machine.getNativeArity('+'), 2);
+    test.equal(machine.isNative('spam'), false);
+}
+
+exports['Comment'] = function (test) {
+    var machine = sfm.createMachine();
+
+    test.equal(machine.defined('('), true);
+    test.equal(machine.isImmediate('('), true);
+}

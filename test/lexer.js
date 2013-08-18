@@ -1,62 +1,63 @@
 
-var sfl = require('../lib/lexer.js'),
-    assert = require('assert');
+var sfl = require('../lib/lexer.js');
     
 // TokenType
 
 var TokenType = sfl.TokenType;
 
-assert.ok(TokenType);
-assert.ok(TokenType.Word);
+exports['Token type'] = function (test) {
+    test.ok(TokenType);
+    test.ok(TokenType.Word);
+}
 
-// Create lexer
+exports['Create lexer'] = function (test) {
+    var lexer = sfl.createLexer('dup');
+    test.ok(lexer);
+}
 
-var lexer = sfl.createLexer('dup');
+exports['Next token'] = function (test) {
+    var lexer = sfl.createLexer('dup');
+    var token = lexer.nextToken();
 
-assert.ok(lexer);
+    test.ok(token);
+    test.equal(token.type, TokenType.Word);
+    test.equal(token.value, 'dup');
 
-// Next token
+    token = lexer.nextToken();
 
-var token = lexer.nextToken();
+    test.equal(token, null);
+}
 
-assert.ok(token);
-assert.equal(token.type, TokenType.Word);
-assert.equal(token.value, 'dup');
+exports['Skip spaces'] = function (test) {
+    var lexer = sfl.createLexer('  dup   ');
 
-token = lexer.nextToken();
+    test.ok(lexer);
 
-assert.equal(token, null);
+    var token = lexer.nextToken();
 
-// Skip spaces
+    test.ok(token);
+    test.equal(token.type, TokenType.Word);
+    test.equal(token.value, 'dup');
 
-var lexer = sfl.createLexer('  dup   ');
+    token = lexer.nextToken();
 
-assert.ok(lexer);
+    test.equal(token, null);
+}
 
-var token = lexer.nextToken();
+exports['Get integer'] = function (test) {
+    var lexer = sfl.createLexer('123');
+    var token = lexer.nextToken();
 
-assert.ok(token);
-assert.equal(token.type, TokenType.Word);
-assert.equal(token.value, 'dup');
+    test.ok(token);
+    test.equal(token.type, TokenType.Integer);
+    test.equal(token.value, '123');
+}
 
-token = lexer.nextToken();
+exports['Get negative integer'] = function (test) {
+    var lexer = sfl.createLexer(' -123 ');
+    var token = lexer.nextToken();
 
-assert.equal(token, null);
-
-// Get integer
-
-var lexer = sfl.createLexer('123');
-var token = lexer.nextToken();
-
-assert.ok(token);
-assert.equal(token.type, TokenType.Integer);
-assert.equal(token.value, '123');
-
-// Get negative integer
-
-var lexer = sfl.createLexer(' -123 ');
-var token = lexer.nextToken();
-
-assert.ok(token);
-assert.equal(token.type, TokenType.Integer);
-assert.equal(token.value, '-123');
+    test.ok(token);
+    test.equal(token.type, TokenType.Integer);
+    test.equal(token.value, '-123');
+}
