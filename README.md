@@ -42,7 +42,7 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [Forth, Inc.](http://www.forth.com/forth/)
 - [Forth Interest Group](http://www.forth.org/)
 - [Forth Tutorials](http://www.forth.org/tutorials.html)
-- [Programming Forth (pdf)](http://www.mpeforth.com/arena/ProgramForth.pdf)
+- [Programming Forth (pdf)](http://www.mpeforth.com/arena/ProgramForth.pdf) My main reference to implement initial words
 - [Thinking Forth](http://thinking-forth.sourceforge.net/)
 - [Starting Forth](http://home.iae.nl/users/mhx/sf.html)
 - [JavaScript Operators Precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) with a list of operators to implement
