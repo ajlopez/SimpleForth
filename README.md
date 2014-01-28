@@ -47,6 +47,7 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [Starting Forth](http://home.iae.nl/users/mhx/sf.html)
 - [JavaScript Operators Precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) with a list of operators to implement
 - [Forth in Python](http://www.openbookproject.net/py4fun/forth/forth.html)
+- [Forth Methodology Applied to Programming](http://www.ultratechnology.com/method.htm)
 
 ## Contribution
 
