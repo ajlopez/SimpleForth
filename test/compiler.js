@@ -8,7 +8,7 @@ var machine = sfm.machine();
 
 // Create compiler
 
-var compiler = sfc.createCompiler(machine);
+var compiler = sfc.compiler(machine);
 
 exports['Compile integer'] = function (test) {
     var result = compiler.compile('123');
