@@ -4,7 +4,7 @@ var sfc = require('../lib/compiler'),
 
 // Create machine
 
-var machine = sfm.createMachine();
+var machine = sfm.machine();
 
 // Create compiler
 

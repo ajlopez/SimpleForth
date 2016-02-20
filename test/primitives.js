@@ -1,7 +1,7 @@
 
 var primitives = require('../lib/primitives.js'),
     sfl = require('../lib/lexer.js'),
-    machine = require('../lib/machine.js').createMachine();
+    machine = require('../lib/machine.js').machine();
 
 // TokenType
 

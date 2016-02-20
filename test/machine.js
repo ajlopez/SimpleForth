@@ -2,24 +2,24 @@
 var sfm = require('../lib/machine.js');
     
 exports['Creates machine'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
     test.ok(machine);
 }
 
 exports['Length'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
     test.equal(machine.length(), 0);
 }
 
 exports['Machine push pop'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
     machine.push(1);
     test.equal(machine.length(), 1);
     test.equal(machine.pop(), 1);
 }
 
 exports['Machine push push top pop pop'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
 
     machine.push(1);
     machine.push(3);
@@ -30,7 +30,7 @@ exports['Machine push push top pop pop'] = function (test) {
 }
   
 exports['Initial dup'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
 
     function dup(forth) {
         var value = machine.pop();
@@ -47,7 +47,7 @@ exports['Initial dup'] = function (test) {
 }
 
 exports['Define and apply dup'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
 
     function dup(forth) {
         var value = machine.pop();
@@ -65,7 +65,7 @@ exports['Define and apply dup'] = function (test) {
 }
 
 exports['Defined'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
 
     function dup(forth) {
         var value = machine.pop();
@@ -80,7 +80,7 @@ exports['Defined'] = function (test) {
 }
 
 exports['Binary native operator'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
 
     test.ok(machine.isNative('+'));
     test.equal(machine.getNativeArity('+'), 2);
@@ -88,7 +88,7 @@ exports['Binary native operator'] = function (test) {
 }
 
 exports['Comment'] = function (test) {
-    var machine = sfm.createMachine();
+    var machine = sfm.machine();
 
     test.equal(machine.defined('('), true);
     test.equal(machine.isImmediate('('), true);
