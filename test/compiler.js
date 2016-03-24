@@ -33,25 +33,25 @@ exports['Compile defined word'] = function (test) {
 exports['Compile two words'] = function (test) {
     var result = compiler.compile('1 dup');
     test.ok(result);
-    test.equal(result, "forth.push(1);forth.apply('dup');");
+    test.equal(result, "forth.push(1); forth.apply('dup');");
 }
 
 exports['Compile three words'] = function (test) {
     var result = compiler.compile('1 Math dup');
     test.ok(result);
-    test.equal(result, "forth.push(1);forth.push(Math);forth.apply('dup');");
+    test.equal(result, "forth.push(1); forth.push(Math); forth.apply('dup');");
 }
 
 exports['Compile native operator'] = function (test) {
     var result = compiler.compile('1 2 + dup');
     test.ok(result);
-    test.equal(result, "forth.push(1 + 2);forth.apply('dup');");
+    test.equal(result, "forth.push(1 + 2); forth.apply('dup');");
 }
 
 exports['Compile native operator without enough arguments'] = function (test) {
     var result = compiler.compile('1 + dup');
     test.ok(result);
-    test.equal(result, "forth.push(1);forth.apply('+');forth.apply('dup');");
+    test.equal(result, "forth.push(1); forth.apply('+'); forth.apply('dup');");
 }
 
 exports['Compile simple assigment'] = function (test) {
@@ -63,7 +63,7 @@ exports['Compile simple assigment'] = function (test) {
 exports['Compile assigment'] = function (test) {
     var result = compiler.compile('1 dup x=');
     test.ok(result);
-    test.equal(result, "forth.push(1);forth.apply('dup');var x = forth.pop();");
+    test.equal(result, "forth.push(1); forth.apply('dup'); var x = forth.pop();");
 }
 
 exports['Compile unary operator'] = function (test) {
