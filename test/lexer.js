@@ -11,12 +11,12 @@ exports['Token type'] = function (test) {
 }
 
 exports['Create lexer'] = function (test) {
-    var lexer = sfl.createLexer('dup');
+    var lexer = sfl.lexer('dup');
     test.ok(lexer);
 }
 
 exports['Next token'] = function (test) {
-    var lexer = sfl.createLexer('dup');
+    var lexer = sfl.lexer('dup');
     var token = lexer.nextToken();
 
     test.ok(token);
@@ -29,7 +29,7 @@ exports['Next token'] = function (test) {
 }
 
 exports['Skip spaces'] = function (test) {
-    var lexer = sfl.createLexer('  dup   ');
+    var lexer = sfl.lexer('  dup   ');
 
     test.ok(lexer);
 
@@ -45,7 +45,7 @@ exports['Skip spaces'] = function (test) {
 }
 
 exports['Get integer'] = function (test) {
-    var lexer = sfl.createLexer('123');
+    var lexer = sfl.lexer('123');
     var token = lexer.nextToken();
 
     test.ok(token);
@@ -54,7 +54,7 @@ exports['Get integer'] = function (test) {
 }
 
 exports['Get negative integer'] = function (test) {
-    var lexer = sfl.createLexer(' -123 ');
+    var lexer = sfl.lexer(' -123 ');
     var token = lexer.nextToken();
 
     test.ok(token);

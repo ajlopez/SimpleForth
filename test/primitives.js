@@ -251,7 +251,7 @@ exports['('] = function (test) {
     test.equal(typeof primitives['('], "function");
     test.ok(primitives['('].forth);
     test.ok(primitives['('].forth.immediate);
-    var lexer = sfl.createLexer("( a comment) dup");
+    var lexer = sfl.lexer("( a comment) dup");
     primitives['('](machine, lexer);
     test.equal(machine.length(), 0);
     var token = lexer.nextToken();
@@ -267,7 +267,7 @@ exports['."'] = function (test) {
     test.equal(typeof primitives['."'], "function");
     test.ok(primitives['."'].forth);
     test.ok(primitives['."'].forth.immediate);
-    var lexer = sfl.createLexer('a string"');
+    var lexer = sfl.lexer('a string"');
     var result = primitives['."'](machine, lexer);
     test.equal(machine.length(), 0);
     test.equal(result, '"a string"');
@@ -280,7 +280,7 @@ exports['variable'] = function (test) {
     test.equal(typeof primitives.variable, "function");
     test.ok(primitives.variable.forth);
     test.ok(primitives.variable.forth.immediate);
-    var lexer = sfl.createLexer('x');
+    var lexer = sfl.lexer('x');
     var result = primitives.variable(machine, lexer);
     test.equal(machine.length(), 0);
     test.ok(result);
