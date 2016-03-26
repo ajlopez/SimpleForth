@@ -10,3 +10,11 @@ exports['Simple compile and run'] = function (test) {
     test.equal(forth.pop(), 3);
 }
 
+exports['Execute'] = function (test) {   
+    var forth = sf.forth();
+    sf.execute("1 2 +", forth);
+    test.equal(forth.pop(), 3);
+}
+
+
+
