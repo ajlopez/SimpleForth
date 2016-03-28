@@ -720,3 +720,4 @@ exports['1-'] = function (test) {
     test.ok(machine.length(), 1);
     test.equal(machine.pop(), 2);
 }
+
