@@ -54,6 +54,19 @@ exports['Operator 1+ as word'] = function (test) {
     test.equal(token, null);
 }
 
+exports['Operator 1- as word'] = function (test) {
+    var lexer = sfl.lexer('1-');
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.type, TokenType.Word);
+    test.equal(token.value, '1-');
+
+    token = lexer.nextToken();
+
+    test.equal(token, null);
+}
+
 exports['Skip spaces'] = function (test) {
     var lexer = sfl.lexer('  dup   ');
 

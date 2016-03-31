@@ -25,4 +25,9 @@ exports['Evaluate text'] = function (test) {
     test.equal(sf.evaluate("1 2 +"), 3);
 }
 
+exports['Evaluate primitives'] = function (test) {   
+    test.equal(sf.evaluate("1 1+"), 2);
+    test.equal(sf.evaluate("3 1-"), 2);
+}
+
 
