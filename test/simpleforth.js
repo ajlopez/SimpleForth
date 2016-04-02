@@ -25,6 +25,18 @@ exports['Evaluate text'] = function (test) {
     test.equal(sf.evaluate("1 2 +"), 3);
 }
 
+exports['Evaluate text with newline'] = function (test) {   
+    test.equal(sf.evaluate("1 \n2 +"), 3);
+}
+
+exports['Evaluate text with carriage return'] = function (test) {   
+    test.equal(sf.evaluate("1 \r2 +"), 3);
+}
+
+exports['Evaluate text with carriage return new line'] = function (test) {   
+    test.equal(sf.evaluate("1 \r\n2 +"), 3);
+}
+
 exports['Evaluate primitives'] = function (test) {   
     test.equal(sf.evaluate("1 1+"), 2);
     test.equal(sf.evaluate("3 1-"), 2);
