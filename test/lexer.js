@@ -41,6 +41,32 @@ exports['Next token skipping comment'] = function (test) {
     test.equal(token, null);
 }
 
+exports['Next token skipping line comment'] = function (test) {
+    var lexer = sfl.lexer('\\ a comment \n dup');
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.type, TokenType.Word);
+    test.equal(token.value, 'dup');
+
+    token = lexer.nextToken();
+
+    test.equal(token, null);
+}
+
+exports['Next token skipping line comment with carriage return'] = function (test) {
+    var lexer = sfl.lexer('\\ a comment \r dup');
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.type, TokenType.Word);
+    test.equal(token.value, 'dup');
+
+    token = lexer.nextToken();
+
+    test.equal(token, null);
+}
+
 exports['Operator 1+ as word'] = function (test) {
     var lexer = sfl.lexer('1+');
     var token = lexer.nextToken();
