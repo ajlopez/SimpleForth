@@ -715,3 +715,26 @@ exports['1-'] = function (test) {
     test.equal(machine.pop(), 2);
 }
 
+exports['.'] = function (test) {
+    var val = null;
+    
+    machine.output = {
+        write: function (value) {
+            test.ok(value);
+            test.equal(1, value);
+            val = value;
+        }
+    }
+    
+    test.ok(primitives['.']);
+    test.equal(typeof primitives['.'], "function");
+    
+    machine.push(1);
+    
+    primitives['.'](machine);
+    
+    test.ok(val);
+    test.equal(1, val);
+    test.equal(0, machine.length());
+}
+
