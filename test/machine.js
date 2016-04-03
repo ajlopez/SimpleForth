@@ -93,3 +93,12 @@ exports['Comment'] = function (test) {
     test.equal(machine.defined('('), true);
     test.equal(machine.isImmediate('('), true);
 }
+
+exports['Output with write'] = function (test) {
+    var machine = sfm.machine();
+    
+    test.ok(machine.output);
+    test.equal(typeof machine.output, 'object');
+    test.ok(machine.output.write);
+    test.equal(typeof machine.output.write, 'function');
+}
