@@ -262,6 +262,33 @@ exports['('] = function (test) {
     test.equal(token, null);
 }
 
+exports['\\'] = function (test) {
+    test.ok(primitives['\\']);
+    test.equal(typeof primitives['\\'], "function");
+    test.ok(primitives['\\'].forth);
+    test.ok(primitives['\\'].forth.immediate);
+    
+    var lexer = sfl.lexer("\\ a line comment\n dup");
+    primitives['\\'](machine, lexer);
+    test.equal(machine.length(), 0);
+    var token = lexer.nextToken();
+    test.ok(token);
+    test.equal(token.type, TokenType.Word);
+    test.equal(token.value, 'dup');
+    token = lexer.nextToken();
+    test.equal(token, null);
+    
+    var lexer = sfl.lexer("\\ a line comment\r dup");
+    primitives['\\'](machine, lexer);
+    test.equal(machine.length(), 0);
+    var token = lexer.nextToken();
+    test.ok(token);
+    test.equal(token.type, TokenType.Word);
+    test.equal(token.value, 'dup');
+    token = lexer.nextToken();
+    test.equal(token, null);
+}
+
 exports['."'] = function (test) {
     test.ok(primitives['."']);
     test.equal(typeof primitives['."'], "function");
