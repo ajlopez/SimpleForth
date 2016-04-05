@@ -86,6 +86,20 @@ exports['Compile integer skipping comment'] = function (test) {
     test.equal(result, "forth.push(123);");
 }
 
+exports['Compile integer skipping line comment'] = function (test) {
+    var result = compiler.compile('\\ it is an integer\n 123');
+
+    test.ok(result);
+    test.equal(result, "forth.push(123);");
+}
+
+exports['Compile integer skipping line comment with carriage return'] = function (test) {
+    var result = compiler.compile('\\ it is an integer\r 123');
+
+    test.ok(result);
+    test.equal(result, "forth.push(123);");
+}
+
 exports['Compile variable'] = function (test) {
     var result = compiler.compile('variable x');
 
