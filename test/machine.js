@@ -102,3 +102,11 @@ exports['Output with write'] = function (test) {
     test.ok(machine.output.write);
     test.equal(typeof machine.output.write, 'function');
 }
+
+exports['Compile from machine'] = function (test) {
+    var machine = sfm.machine();
+    
+    var result = machine.compile('123');
+    test.ok(result);
+    test.equal(result, "forth.push(123);");
+}
