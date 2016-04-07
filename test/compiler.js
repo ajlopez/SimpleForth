@@ -1,6 +1,6 @@
 
-var sfc = require('../lib/compiler'),
-    sfm = require('../lib/machine');
+var sfc = require('../lib/compiler');
+var sfm = require('../lib/machine');
 
 // Create machine
 
