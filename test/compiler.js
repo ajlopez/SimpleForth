@@ -1,6 +1,7 @@
 
 var sfc = require('../lib/compiler');
 var sfm = require('../lib/machine');
+var sfl = require('../lib/lexer');
 
 // Create machine
 
@@ -106,3 +107,12 @@ exports['Compile variable'] = function (test) {
     test.ok(result);
     test.equal(result, "var x;");
 }
+
+exports['Compile variable using lexer'] = function (test) {
+    var lexer = sfl.lexer('variable x');
+    var result = compiler.compile(lexer);
+
+    test.ok(result);
+    test.equal(result, "var x;");
+}
+
