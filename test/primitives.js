@@ -765,3 +765,13 @@ exports['.'] = function (test) {
     test.equal(0, machine.length());
 }
 
+exports[':'] = function (test) {
+    test.ok(primitives[':']);
+    test.equal(typeof primitives[':'], "function");
+    test.ok(primitives[':'].forth);
+    test.ok(primitives[':'].forth.immediate);
+    var lexer = sfl.lexer("inc 1+ ;");
+    primitives[':'](machine, lexer);
+    token = lexer.nextToken();
+    test.equal(token, null);
+}
