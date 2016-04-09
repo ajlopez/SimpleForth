@@ -770,8 +770,12 @@ exports[':'] = function (test) {
     test.equal(typeof primitives[':'], "function");
     test.ok(primitives[':'].forth);
     test.ok(primitives[':'].forth.immediate);
-    var lexer = sfl.lexer("inc 1+ ;");
+    var lexer = sfl.lexer("twelve 12 ;");
     primitives[':'](machine, lexer);
     token = lexer.nextToken();
     test.equal(token, null);
+    
+    machine.values['twelve'](machine);
+    
+    test.equal(machine.pop(), 12);
 }
