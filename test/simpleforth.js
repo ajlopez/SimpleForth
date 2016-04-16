@@ -1,5 +1,6 @@
 
 var sf = require('..');
+var path = require('path');
 
 exports['Simple compile and run'] = function (test) {   
     var forth = sf.forth();
@@ -24,6 +25,11 @@ exports['Evaluate text using machine'] = function (test) {
 exports['Evaluate defined word'] = function (test) {   
     var forth = sf.forth();
     test.equal(sf.evaluate(": inc 1+ ; 2 inc", forth), 3);
+}
+
+exports['Evaluate defined word'] = function (test) {   
+    var forth = sf.forth();
+    test.equal(sf.evaluateFile(path.join(__dirname, "inc.fth")), 3);
 }
 
 exports['Evaluate text'] = function (test) {   
