@@ -21,6 +21,11 @@ exports['Evaluate text using machine'] = function (test) {
     test.equal(sf.evaluate("1 2 +", forth), 3);
 }
 
+exports['Evaluate defined word'] = function (test) {   
+    var forth = sf.forth();
+    test.equal(sf.evaluate(": inc 1+ ; 2 inc", forth), 3);
+}
+
 exports['Evaluate text'] = function (test) {   
     test.equal(sf.evaluate("1 2 +"), 3);
 }
