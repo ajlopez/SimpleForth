@@ -17,6 +17,12 @@ exports['Execute'] = function (test) {
     test.equal(forth.pop(), 3);
 }
 
+exports['Execute File'] = function (test) {   
+    var forth = sf.forth();
+    sf.executeFile(path.join(__dirname, "add.fth"), forth);
+    test.equal(forth.pop(), 3);
+}
+
 exports['Evaluate text using machine'] = function (test) {   
     var forth = sf.forth();
     test.equal(sf.evaluate("1 2 +", forth), 3);
