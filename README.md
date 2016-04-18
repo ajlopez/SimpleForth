@@ -49,6 +49,7 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [Forth in Python](http://www.openbookproject.net/py4fun/forth/forth.html)
 - [Forth Methodology Applied to Programming](http://www.ultratechnology.com/method.htm)
 - [A Beginner's Guide to Forth](http://galileo.phys.virginia.edu/classes/551.jvn.fall01/primer.htm)
+- [Let's Build a Compiler](http://home.iae.nl/users/mhx/crenshaw/tiny.html)
 
 ## Contribution
 
