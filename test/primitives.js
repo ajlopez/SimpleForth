@@ -373,6 +373,20 @@ exports['/'] = function (test) {
     test.equal(machine.pop(), 1.5);
 }
 
+exports['mod'] = function (test) {
+    test.ok(primitives['mod']);
+    test.equal(typeof primitives['/'], "object");
+    test.equal(primitives['mod'].arity, 2);
+    test.ok(primitives['mod'].apply);
+    test.equal(typeof primitives['mod'].apply, "function");
+
+    machine.push(3);
+    machine.push(2);
+    primitives['mod'].apply(machine);
+    test.ok(machine.length(), 1);
+    test.equal(machine.pop(), 1);
+}
+
 exports['%'] = function (test) {
     test.ok(primitives['%']);
     test.equal(typeof primitives['%'], "object");
