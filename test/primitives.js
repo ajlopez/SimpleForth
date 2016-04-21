@@ -402,6 +402,22 @@ exports['/mod'] = function (test) {
     test.equal(machine.pop(), 2);
 }
 
+exports['*/mod'] = function (test) {
+    test.ok(primitives['*/mod']);
+    test.equal(typeof primitives['*/mod'], "object");
+    test.equal(primitives['*/mod'].arity, 2);
+    test.ok(primitives['*/mod'].apply);
+    test.equal(typeof primitives['*/mod'].apply, "function");
+
+    machine.push(2);
+    machine.push(11);
+    machine.push(4);
+    primitives['*/mod'].apply(machine);
+    test.ok(machine.length(), 2);
+    test.equal(machine.pop(), 5);
+    test.equal(machine.pop(), 2);
+}
+
 exports['%'] = function (test) {
     test.ok(primitives['%']);
     test.equal(typeof primitives['%'], "object");
