@@ -797,6 +797,16 @@ exports['2+'] = function (test) {
     test.equal(machine.pop(), 5);
 }
 
+exports['2-'] = function (test) {
+    test.ok(primitives['2-']);
+    test.equal(typeof primitives['2-'], "function");
+
+    machine.push(3);
+    primitives['2-'](machine);
+    test.ok(machine.length(), 1);
+    test.equal(machine.pop(), 1);
+}
+
 exports['.'] = function (test) {
     var val = null;
     
