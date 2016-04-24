@@ -49,6 +49,12 @@ exports['Compile native operator'] = function (test) {
     test.equal(result, "forth.push(1 + 2); forth.apply('dup');");
 }
 
+exports['Compile 1+ as native operator'] = function (test) {
+    var result = compiler.compile('2 1+');
+    test.ok(result);
+    test.equal(result, "forth.push(2 + 1);");
+}
+
 exports['Compile native operator without enough arguments'] = function (test) {
     var result = compiler.compile('1 + dup');
     test.ok(result);
