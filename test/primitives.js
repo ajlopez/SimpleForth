@@ -782,12 +782,15 @@ exports['1+'] = function (test) {
 
 exports['1-'] = function (test) {
     test.ok(primitives['1-']);
-    test.equal(typeof primitives['1-'], "function");
+    test.equal(typeof primitives['1-'], "object");
+    test.equal(primitives['1-'].arity, 1);
+    test.ok(primitives['1-'].apply);
+    test.equal(typeof primitives['1-'].apply, "function");
 
-    machine.push(3);
-    primitives['1-'](machine);
+    machine.push(2);
+    primitives['1-'].apply(machine);
     test.ok(machine.length(), 1);
-    test.equal(machine.pop(), 2);
+    test.equal(machine.pop(), 1);
 }
 
 exports['2+'] = function (test) {
