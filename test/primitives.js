@@ -47,8 +47,9 @@ exports['drop'] = function (test) {
 
 exports['emit'] = function (test) {
     test.ok(primitives.emit);
-    test.equal(typeof primitives.drop, "function");
+    test.equal(typeof primitives.emit, "function");
 
+    var machine = require('../lib/machine.js').machine();
     var result = '';
     
     machine.output.write = function (data) {
@@ -58,6 +59,22 @@ exports['emit'] = function (test) {
     machine.push(42);
     primitives.emit(machine);
     test.equal('*', result);
+}
+
+exports['cr'] = function (test) {
+    test.ok(primitives.cr);
+    test.equal(typeof primitives.cr, "function");
+
+    var machine = require('../lib/machine.js').machine();
+    var result = '';
+    
+    machine.output.write = function (data) {
+        result += data.toString();
+    };
+    
+    machine.push(42);
+    primitives.cr(machine);
+    test.equal('\r', result);
 }
 
 exports['swap'] = function (test) {
