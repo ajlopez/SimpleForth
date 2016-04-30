@@ -56,6 +56,11 @@ exports['Evaluate text with carriage return new line'] = function (test) {
 
 exports['Evaluate primitives'] = function (test) {   
     test.equal(sf.evaluate("1 1+"), 2);
+    test.equal(sf.evaluate("1 1+ 1+"), 3);
+    test.equal(sf.evaluate("1 2+"), 3);
+    test.equal(sf.evaluate("1 2+ 2*"), 6);
+    test.equal(sf.evaluate("1 1+ 2/"), 1);
+    
     test.equal(sf.evaluate("3 1-"), 2);
 }
 
