@@ -45,6 +45,21 @@ exports['drop'] = function (test) {
     test.equal(machine.length(), 0);
 }
 
+exports['emit'] = function (test) {
+    test.ok(primitives.emit);
+    test.equal(typeof primitives.drop, "function");
+
+    var result = '';
+    
+    machine.output.write = function (data) {
+        result += data.toString();
+    };
+    
+    machine.push(42);
+    primitives.emit(machine);
+    test.equal('*', result);
+}
+
 exports['swap'] = function (test) {
     test.ok(primitives.swap);
     test.equal(typeof primitives.swap, "function");
