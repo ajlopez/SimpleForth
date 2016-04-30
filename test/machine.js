@@ -103,6 +103,21 @@ exports['Output with write'] = function (test) {
     test.equal(typeof machine.output.write, 'function');
 }
 
+exports['Machine write'] = function (test) {
+    var machine = sfm.machine();
+    
+    var result = '';
+    
+    machine.output.write = function (data) {
+        result += data.toString();
+    }
+    
+    machine.write(42);
+    test.equal('42', result);
+    machine.write('ok');
+    test.equal('42ok', result);
+}
+
 exports['Compile from machine'] = function (test) {
     var machine = sfm.machine();
     
