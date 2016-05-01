@@ -77,6 +77,22 @@ exports['cr'] = function (test) {
     test.equal('\r', result);
 }
 
+exports['spaces'] = function (test) {
+    test.ok(primitives.spaces);
+    test.equal(typeof primitives.spaces, "function");
+
+    var machine = require('../lib/machine.js').machine();
+    var result = '';
+    
+    machine.output.write = function (data) {
+        result += data.toString();
+    };
+    
+    machine.push(4);
+    primitives.spaces(machine);
+    test.equal('    ', result);
+}
+
 exports['swap'] = function (test) {
     test.ok(primitives.swap);
     test.equal(typeof primitives.swap, "function");
