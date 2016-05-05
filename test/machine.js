@@ -18,6 +18,14 @@ exports['Machine push pop'] = function (test) {
     test.equal(machine.pop(), 1);
 }
 
+exports['Machine return push pop'] = function (test) {
+    var machine = sfm.machine();
+    machine.rpush(42);
+    test.equal(machine.length(), 0);
+    test.equal(machine.rlength(), 1);
+    test.equal(machine.rpop(), 42);
+}
+
 exports['Machine push push top pop pop'] = function (test) {
     var machine = sfm.machine();
 
