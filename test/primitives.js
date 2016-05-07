@@ -954,7 +954,7 @@ exports[':'] = function (test) {
     token = lexer.nextToken();
     test.equal(token, null);
     
-    machine.values['twelve'](machine);
+    machine.apply('twelve');
     
     test.equal(machine.pop(), 12);
 }
