@@ -52,9 +52,11 @@ exports['emit'] = function (test) {
     var machine = require('../lib/machine.js').machine();
     var result = '';
     
-    machine.output.write = function (data) {
-        result += data.toString();
-    };
+    machine.output( {
+        write: function (data) {
+            result += data.toString();
+        }
+    });
     
     machine.push(42);
     primitives.emit(machine);
@@ -68,9 +70,11 @@ exports['cr'] = function (test) {
     var machine = require('../lib/machine.js').machine();
     var result = '';
     
-    machine.output.write = function (data) {
-        result += data.toString();
-    };
+    machine.output( {
+        write: function (data) {
+            result += data.toString();
+        }
+    });
     
     machine.push(42);
     primitives.cr(machine);
@@ -84,9 +88,11 @@ exports['spaces'] = function (test) {
     var machine = require('../lib/machine.js').machine();
     var result = '';
     
-    machine.output.write = function (data) {
-        result += data.toString();
-    };
+    machine.output( {
+        write: function (data) {
+            result += data.toString();
+        }
+    });
     
     machine.push(4);
     primitives.spaces(machine);

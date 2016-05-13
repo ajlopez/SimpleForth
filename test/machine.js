@@ -105,10 +105,10 @@ exports['Comment'] = function (test) {
 exports['Output with write'] = function (test) {
     var machine = sfm.machine();
     
-    test.ok(machine.output);
-    test.equal(typeof machine.output, 'object');
-    test.ok(machine.output.write);
-    test.equal(typeof machine.output.write, 'function');
+    test.ok(machine.output());
+    test.equal(typeof machine.output(), 'object');
+    test.ok(machine.output().write);
+    test.equal(typeof machine.output().write, 'function');
 }
 
 exports['Machine write'] = function (test) {
@@ -116,9 +116,11 @@ exports['Machine write'] = function (test) {
     
     var result = '';
     
-    machine.output.write = function (data) {
-        result += data.toString();
-    }
+    machine.output({
+        write: function (data) {
+            result += data.toString();
+        }
+    });
     
     machine.write(42);
     test.equal('42', result);
