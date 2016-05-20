@@ -170,3 +170,10 @@ exports['Compile variable using lexer'] = function (test) {
     test.equal(result, "var x;");
 }
 
+exports['Compile if'] = function (test) {
+    var result = compiler.compile('1 if 2 then');
+
+    test.ok(result);
+    test.equal(result, "if (1) { forth.push(2); }");
+}
+
