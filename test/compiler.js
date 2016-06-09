@@ -177,10 +177,24 @@ exports['Compile if then'] = function (test) {
     test.equal(result, "if (1) { forth.push(2); }");
 }
 
+exports['Compile if then with two expressions'] = function (test) {
+    var result = compiler.compile('1 if 2 3 then');
+
+    test.ok(result);
+    test.equal(result, "if (1) { forth.push(2); forth.push(3); }");
+}
+
 exports['Compile if else then'] = function (test) {
     var result = compiler.compile('1 if 2 else 3 then');
 
     test.ok(result);
     test.equal(result, "if (1) { forth.push(2); } else { forth.push(3); }");
+}
+
+exports['Compile if else then with four expressions'] = function (test) {
+    var result = compiler.compile('1 if 2 4 else 3 5 then');
+
+    test.ok(result);
+    test.equal(result, "if (1) { forth.push(2); forth.push(4); } else { forth.push(3); forth.push(5); }");
 }
 
