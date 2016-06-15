@@ -964,3 +964,33 @@ exports[':'] = function (test) {
     
     test.equal(machine.pop(), 12);
 }
+
+exports['and'] = function (test) {
+    test.ok(primitives['and']);
+    test.equal(typeof primitives['and'], "function");
+
+    machine.push(1);
+    machine.push(2);
+    primitives['and'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), true);
+
+    machine.push(0);
+    machine.push(2);
+    primitives['and'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), false);
+
+    machine.push(1);
+    machine.push(0);
+    primitives['and'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), false);
+
+    machine.push(1);
+    machine.push(false);
+    primitives['and'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), false);
+}
+
