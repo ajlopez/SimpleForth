@@ -994,3 +994,32 @@ exports['and'] = function (test) {
     test.strictEqual(machine.pop(), false);
 }
 
+exports['or'] = function (test) {
+    test.ok(primitives['or']);
+    test.equal(typeof primitives['or'], "function");
+
+    machine.push(1);
+    machine.push(2);
+    primitives['or'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), true);
+
+    machine.push(0);
+    machine.push(2);
+    primitives['or'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), true);
+
+    machine.push(1);
+    machine.push(0);
+    primitives['or'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), true);
+
+    machine.push(0);
+    machine.push(false);
+    primitives['or'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), false);
+}
+
