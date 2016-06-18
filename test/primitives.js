@@ -1043,3 +1043,23 @@ exports['0<'] = function (test) {
     test.strictEqual(machine.pop(), false);
 }
 
+exports['0>'] = function (test) {
+    test.ok(primitives['0>']);
+    test.equal(typeof primitives['0>'], "function");
+
+    machine.push(1);
+    primitives['0>'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), true);
+
+    machine.push(-1);
+    primitives['0>'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), false);
+
+    machine.push(0);
+    primitives['0>'](machine);
+    test.equal(machine.length(), 1);
+    test.strictEqual(machine.pop(), false);
+}
+
