@@ -1065,21 +1065,15 @@ exports['0>'] = function (test) {
 
 exports['0='] = function (test) {
     test.ok(primitives['0=']);
-    test.equal(typeof primitives['0='], "function");
 
-    machine.push(1);
-    primitives['0='](machine);
-    test.equal(machine.length(), 1);
-    test.strictEqual(machine.pop(), false);
+    test.equal(typeof primitives['0='], "object");
+    test.equal(primitives['0='].arity, 1);
+    test.ok(primitives['0='].apply);
+    test.equal(typeof primitives['0='].apply, "function");
 
-    machine.push(-1);
-    primitives['0='](machine);
-    test.equal(machine.length(), 1);
-    test.strictEqual(machine.pop(), false);
-
-    machine.push(0);
-    primitives['0='](machine);
-    test.equal(machine.length(), 1);
-    test.strictEqual(machine.pop(), true);
+    machine.push(2);
+    primitives['0='].apply(machine);
+    test.ok(machine.length(), 1);
+    test.equal(machine.pop(), false);
 }
 
