@@ -250,6 +250,26 @@ exports['2over'] = function (test) {
     test.equal(machine.pop(), 1);
 }
 
+exports['2rot'] = function (test) {
+    test.ok(primitives['2rot']);
+    test.equal(typeof primitives['2rot'], "function");
+
+    machine.push(1);
+    machine.push(2);
+    machine.push(3);
+    machine.push(4);
+    machine.push(5);
+    machine.push(6);
+    primitives['2rot'](machine);
+    test.equal(machine.length(), 6);
+    test.equal(machine.pop(), 2);
+    test.equal(machine.pop(), 1);
+    test.equal(machine.pop(), 6);
+    test.equal(machine.pop(), 5);
+    test.equal(machine.pop(), 4);
+    test.equal(machine.pop(), 3);
+}
+
 exports['min'] = function (test) {
     test.ok(primitives.min);
     test.equal(typeof primitives.min, "function");
