@@ -33,6 +33,11 @@ exports['Evaluate defined word'] = function (test) {
     test.equal(sf.evaluate(": inc 1+ ; 2 inc", forth), 3);
 }
 
+exports['Evaluate defined word skipping comment'] = function (test) {   
+    var forth = sf.forth();
+    test.equal(sf.evaluate(": inc 1+ ( increment function ) ; 2 inc", forth), 3);
+}
+
 exports['Evaluate defined word'] = function (test) {   
     var forth = sf.forth();
     test.equal(sf.evaluateFile(path.join(__dirname, "inc.fth")), 3);
