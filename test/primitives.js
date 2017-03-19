@@ -270,15 +270,26 @@ exports['2rot'] = function (test) {
     test.equal(machine.pop(), 3);
 }
 
+exports['>r'] = function (test) {
+    test.ok(primitives['>r']);
+    test.equal(typeof primitives['>r'], "function");
+
+    machine.push(1);
+    primitives['>r'](machine);
+    test.equal(machine.length(), 0);
+    test.equal(machine.rlength(), 1);
+    test.equal(machine.rpop(), 1);
+}
+
 exports['r>'] = function (test) {
     test.ok(primitives['r>']);
     test.equal(typeof primitives['r>'], "function");
 
-    machine.push(1);
+    machine.rpush(1);
     primitives['r>'](machine);
-    test.equal(machine.length(), 0);
-    test.equal(machine.rlength(), 1);
-    test.equal(machine.rpop(), 1);
+    test.equal(machine.length(), 1);
+    test.equal(machine.rlength(), 0);
+    test.equal(machine.pop(), 1);
 }
 
 exports['min'] = function (test) {
