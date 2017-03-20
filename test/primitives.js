@@ -413,6 +413,21 @@ exports['variable'] = function (test) {
     test.equal(token, null);
 }
 
+exports['constant'] = function (test) {
+    test.ok(primitives.constant);
+    test.equal(typeof primitives.constant, "function");
+    test.ok(primitives.constant.forth);
+    test.ok(primitives.constant.forth.immediate);
+    var lexer = sfl.lexer('x');
+    var result = primitives.constant(machine, lexer);
+    test.equal(machine.length(), 0);
+    test.ok(result);
+    test.ok(result.append);
+    test.equal(result.append, "var x = forth.pop();");
+    var token = lexer.nextToken();
+    test.equal(token, null);
+}
+
 exports['+'] = function (test) {
     test.ok(primitives['+']);
     test.equal(typeof primitives['+'], "object");
