@@ -52,6 +52,7 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [Let's Build a Compiler](http://home.iae.nl/users/mhx/crenshaw/tiny.html)
 - [Moving Forth, Part 6: the Z80 high-level kernel](http://www.bradrodriguez.com/papers/moving6.htm)
 - [Forth 2012](http://lars.nocrew.org/forth2012/index.html)
+- [EasyForth](https://skilldrick.github.io/easyforth/)
 
 ## Contribution
 
