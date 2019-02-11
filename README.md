@@ -53,6 +53,8 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [Moving Forth, Part 6: the Z80 high-level kernel](http://www.bradrodriguez.com/papers/moving6.htm)
 - [Forth 2012](http://lars.nocrew.org/forth2012/index.html)
 - [EasyForth](https://skilldrick.github.io/easyforth/)
+- [A Dynamic Forth Compiler for WebAssembly](https://el-tramo.be/blog/waforth/)
+- [JONESFORTH - A sometimes minimal FORTH compiler and tutorial](http://git.annexia.org/?p=jonesforth.git;a=summary)
 
 ## Contribution
 

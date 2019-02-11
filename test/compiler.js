@@ -1,7 +1,7 @@
 
-var sfc = require('../lib/compiler');
-var sfm = require('../lib/machine');
-var sfl = require('../lib/lexer');
+const sfc = require('../lib/compiler');
+const sfm = require('../lib/machine');
+const sfl = require('../lib/lexer');
 
 // Create machine
 
