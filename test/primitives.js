@@ -1,11 +1,11 @@
 
-var primitives = require('../lib/primitives.js'),
-    sfl = require('../lib/lexer.js'),
-    machine = require('../lib/machine.js').machine();
+const primitives = require('../lib/primitives.js');
+const sfl = require('../lib/lexer.js');
+const machine = require('../lib/machine.js').machine();
 
 // TokenType
 
-var TokenType = sfl.TokenType;
+const TokenType = sfl.TokenType;
     
 exports['First primitive'] = function (test) {
     test.ok(primitives.dup);
@@ -14,7 +14,9 @@ exports['First primitive'] = function (test) {
 
 exports['Apply dup'] = function (test) {
     machine.push(1);
+    
     primitives.dup(machine);
+    
     test.equal(machine.length(), 2);
     test.equal(machine.pop(), 1);
     test.equal(machine.pop(), 1);
@@ -26,12 +28,14 @@ exports['?dup'] = function (test) {
 
     machine.push(1);
     primitives['?dup'](machine);
+    
     test.equal(machine.length(), 2);
     test.equal(machine.pop(), 1);
     test.equal(machine.pop(), 1);
 
     machine.push(0);
     primitives['?dup'](machine);
+    
     test.equal(machine.length(), 1);
     test.equal(machine.pop(), 0);
 }
@@ -42,6 +46,7 @@ exports['drop'] = function (test) {
 
     machine.push(1);
     primitives.drop(machine);
+    
     test.equal(machine.length(), 0);
 }
 
