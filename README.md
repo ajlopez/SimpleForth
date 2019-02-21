@@ -55,6 +55,7 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [EasyForth](https://skilldrick.github.io/easyforth/)
 - [A Dynamic Forth Compiler for WebAssembly](https://el-tramo.be/blog/waforth/)
 - [JONESFORTH - A sometimes minimal FORTH compiler and tutorial](http://git.annexia.org/?p=jonesforth.git;a=summary)
+- [EuroForth 1989](http://www.holonforth.com/ef89.html)
 
 ## Contribution
 
