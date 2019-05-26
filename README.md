@@ -56,6 +56,7 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [A Dynamic Forth Compiler for WebAssembly](https://el-tramo.be/blog/waforth/)
 - [JONESFORTH - A sometimes minimal FORTH compiler and tutorial](http://git.annexia.org/?p=jonesforth.git;a=summary)
 - [EuroForth 1989](http://www.holonforth.com/ef89.html)
+- [SmallForth: an implementation over Pharo Smalltalk – Part 5](https://chicoary.wordpress.com/2019/05/19/smallforth-an-implementation-over-pharo-smalltalk-part-5/)
 
 ## Contribution
 
