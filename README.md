@@ -57,6 +57,7 @@ Inspired by [fjs](https://github.com/mark-hahn/fjs)
 - [JONESFORTH - A sometimes minimal FORTH compiler and tutorial](http://git.annexia.org/?p=jonesforth.git;a=summary)
 - [EuroForth 1989](http://www.holonforth.com/ef89.html)
 - [SmallForth: an implementation over Pharo Smalltalk – Part 5](https://chicoary.wordpress.com/2019/05/19/smallforth-an-implementation-over-pharo-smalltalk-part-5/)
+- [A recursive descendent parser in Forth](https://mcturra2000.wordpress.com/2020/01/19/a-recursive-descent-parser-in-forthlang-and-a-nod-to-rakulang/)
 
 ## Contribution
 
