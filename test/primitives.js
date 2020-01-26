@@ -413,7 +413,7 @@ exports['variable'] = function (test) {
     test.equal(machine.length(), 0);
     test.ok(result);
     test.ok(result.append);
-    test.equal(result.append, "var x;");
+    test.equal(result.append, "let x;");
     var token = lexer.nextToken();
     test.equal(token, null);
 }
@@ -428,7 +428,7 @@ exports['constant'] = function (test) {
     test.equal(machine.length(), 0);
     test.ok(result);
     test.ok(result.append);
-    test.equal(result.append, "var x = forth.pop();");
+    test.equal(result.append, "const x = forth.pop();");
     var token = lexer.nextToken();
     test.equal(token, null);
 }
