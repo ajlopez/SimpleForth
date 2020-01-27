@@ -136,13 +136,14 @@ exports['Compile native operator without enough arguments'] = function (test) {
 exports['Compile simple assigment'] = function (test) {
     var result = compiler.compile('1 x=');
     test.ok(result);
-    test.equal(result, "var x = 1;");
+
+    test.equal(result, "let x = 1;");
 }
 
 exports['Compile assigment'] = function (test) {
     var result = compiler.compile('1 dup x=');
     test.ok(result);
-    test.equal(result, "forth.push(1); forth.apply('dup'); var x = forth.pop();");
+    test.equal(result, "forth.push(1); forth.apply('dup'); let x = forth.pop();");
 }
 
 exports['Compile unary operator'] = function (test) {
@@ -183,7 +184,7 @@ exports['Compile variable'] = function (test) {
     var result = compiler.compile('variable x');
 
     test.ok(result);
-    test.equal(result, "var x;");
+    test.equal(result, "let x;");
 }
 
 exports['Compile variable using lexer'] = function (test) {
@@ -191,7 +192,7 @@ exports['Compile variable using lexer'] = function (test) {
     var result = compiler.compile(lexer);
 
     test.ok(result);
-    test.equal(result, "var x;");
+    test.equal(result, "let x;");
 }
 
 exports['Compile if then'] = function (test) {
