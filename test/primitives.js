@@ -54,8 +54,8 @@ exports['emit'] = function (test) {
     test.ok(primitives.emit);
     test.equal(typeof primitives.emit, "function");
 
-    var machine = require('../lib/machine.js').machine();
-    var result = '';
+    const machine = require('../lib/machine.js').machine();
+    let result = '';
     
     machine.output( {
         write: function (data) {
@@ -72,8 +72,8 @@ exports['cr'] = function (test) {
     test.ok(primitives.cr);
     test.equal(typeof primitives.cr, "function");
 
-    var machine = require('../lib/machine.js').machine();
-    var result = '';
+    const machine = require('../lib/machine.js').machine();
+    let result = '';
     
     machine.output( {
         write: function (data) {
@@ -90,8 +90,8 @@ exports['spaces'] = function (test) {
     test.ok(primitives.spaces);
     test.equal(typeof primitives.spaces, "function");
 
-    var machine = require('../lib/machine.js').machine();
-    var result = '';
+    const machine = require('../lib/machine.js').machine();
+    let result = '';
     
     machine.output( {
         write: function (data) {
@@ -352,15 +352,21 @@ exports['('] = function (test) {
     test.equal(typeof primitives['('], "function");
     test.ok(primitives['('].forth);
     test.ok(primitives['('].forth.immediate);
-    var lexer = sfl.lexer("( a comment) dup");
+    
+    const lexer = sfl.lexer("( a comment) dup");
+    
     primitives['('](machine, lexer);
     test.equal(machine.length(), 0);
-    var token = lexer.nextToken();
+    
+    const token = lexer.nextToken();
+    
     test.ok(token);
     test.equal(token.type, TokenType.Word);
     test.equal(token.value, 'dup');
-    token = lexer.nextToken();
-    test.equal(token, null);
+    
+    const token2 = lexer.nextToken();
+    
+    test.equal(token2, null);
 }
 
 exports['\\'] = function (test) {
@@ -369,25 +375,35 @@ exports['\\'] = function (test) {
     test.ok(primitives['\\'].forth);
     test.ok(primitives['\\'].forth.immediate);
     
-    var lexer = sfl.lexer("\\ a line comment\n dup");
-    primitives['\\'](machine, lexer);
-    test.equal(machine.length(), 0);
-    var token = lexer.nextToken();
-    test.ok(token);
-    test.equal(token.type, TokenType.Word);
-    test.equal(token.value, 'dup');
-    token = lexer.nextToken();
-    test.equal(token, null);
+    const lexer = sfl.lexer("\\ a line comment\n dup");
     
-    var lexer = sfl.lexer("\\ a line comment\r dup");
     primitives['\\'](machine, lexer);
     test.equal(machine.length(), 0);
-    var token = lexer.nextToken();
+    
+    const token = lexer.nextToken();
+    
     test.ok(token);
     test.equal(token.type, TokenType.Word);
     test.equal(token.value, 'dup');
-    token = lexer.nextToken();
-    test.equal(token, null);
+    
+    const token2 = lexer.nextToken();
+    
+    test.equal(token2, null);
+    
+    const lexer2 = sfl.lexer("\\ a line comment\r dup");
+    
+    primitives['\\'](machine, lexer2);
+    test.equal(machine.length(), 0);
+    
+    const token3 = lexer2.nextToken();
+    
+    test.ok(token3);
+    test.equal(token3.type, TokenType.Word);
+    test.equal(token3.value, 'dup');
+    
+    const token4 = lexer2.nextToken();
+    
+    test.equal(token4, null);
 }
 
 exports['."'] = function (test) {
@@ -395,11 +411,15 @@ exports['."'] = function (test) {
     test.equal(typeof primitives['."'], "function");
     test.ok(primitives['."'].forth);
     test.ok(primitives['."'].forth.immediate);
-    var lexer = sfl.lexer('a string"');
-    var result = primitives['."'](machine, lexer);
+    
+    const lexer = sfl.lexer('a string"');
+    const result = primitives['."'](machine, lexer);
+    
     test.equal(machine.length(), 0);
     test.equal(result, '"a string"');
-    var token = lexer.nextToken();
+    
+    const token = lexer.nextToken();
+    
     test.equal(token, null);
 }
 
@@ -408,13 +428,17 @@ exports['variable'] = function (test) {
     test.equal(typeof primitives.variable, "function");
     test.ok(primitives.variable.forth);
     test.ok(primitives.variable.forth.immediate);
-    var lexer = sfl.lexer('x');
-    var result = primitives.variable(machine, lexer);
+    
+    const lexer = sfl.lexer('x');
+    const result = primitives.variable(machine, lexer);
+    
     test.equal(machine.length(), 0);
     test.ok(result);
     test.ok(result.append);
     test.equal(result.append, "let x;");
-    var token = lexer.nextToken();
+    
+    const token = lexer.nextToken();
+    
     test.equal(token, null);
 }
 
@@ -423,13 +447,17 @@ exports['constant'] = function (test) {
     test.equal(typeof primitives.constant, "function");
     test.ok(primitives.constant.forth);
     test.ok(primitives.constant.forth.immediate);
-    var lexer = sfl.lexer('x');
-    var result = primitives.constant(machine, lexer);
+    
+    const lexer = sfl.lexer('x');
+    const result = primitives.constant(machine, lexer);
+    
     test.equal(machine.length(), 0);
     test.ok(result);
     test.ok(result.append);
     test.equal(result.append, "const x = forth.pop();");
-    var token = lexer.nextToken();
+    
+    const token = lexer.nextToken();
+    
     test.equal(token, null);
 }
 
@@ -990,7 +1018,7 @@ exports['2/'] = function (test) {
 }
 
 exports['.'] = function (test) {
-    var val = null;
+    let val = null;
     
     machine.output = {
         write: function (value) {
@@ -1017,7 +1045,9 @@ exports[':'] = function (test) {
     test.equal(typeof primitives[':'], "function");
     test.ok(primitives[':'].forth);
     test.ok(primitives[':'].forth.immediate);
-    var lexer = sfl.lexer("twelve 12 ;");
+    
+    const lexer = sfl.lexer("twelve 12 ;");
+    
     primitives[':'](machine, lexer);
     token = lexer.nextToken();
     test.equal(token, null);
