@@ -142,7 +142,7 @@ exports['Machine write'] = function (test) {
 exports['Compile from machine'] = function (test) {
     const machine = sfm.machine();
     
-    var result = machine.compile('123');
+    const result = machine.compile('123');
     
     test.ok(result);
     test.equal(result, "forth.push(123);");

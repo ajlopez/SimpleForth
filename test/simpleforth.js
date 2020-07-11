@@ -11,6 +11,15 @@ exports['Simple compile and run'] = function (test) {
     test.equal(forth.pop(), 3);
 }
 
+exports['Simple compile without machine and run'] = function (test) {   
+    const forth = sf.forth();
+    const func = sf.compile("1 2 +");
+
+    func(forth);
+
+    test.equal(forth.pop(), 3);
+}
+
 exports['Execute'] = function (test) {   
     const forth = sf.forth();
     
